@@ -1,0 +1,43 @@
+
+https://app.urlgeni.us/
+
+SPOTIFY
+https://open.spotify.com/track/3XVBdLihbNbxUwZosxcGuJ?si=3b9cc7d835e74279
+
+ios when installed
+spotify://track/3XVBdLihbNbxUwZosxcGuJ?si=475f0ccda60448c2&si=475f0ccda60448c2
+ios when not installed
+https://open.spotify.com/track/3XVBdLihbNbxUwZosxcGuJ?si=475f0ccda60448c2
+
+android when installed
+spotify://track/3XVBdLihbNbxUwZosxcGuJ?si=3b9cc7d835e74279&si=3b9cc7d835e74279
+android when not installed
+https://open.spotify.com/track/3XVBdLihbNbxUwZosxcGuJ?si=3b9cc7d835e74279
+
+
+DEEZER 
+https://www.deezer.com/en/track/629466
+
+ios when installed
+deezer://en/track/629466
+ios when not installed
+https://www.deezer.com/en/track/629466
+
+android when installed
+intent://www.deezer.com/en/track/629466/#Intent;package=deezer.android.app;scheme=deezer;end
+android when not installed
+https://www.deezer.com/en/track/629466
+
+
+APPLE MUSIC
+https://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130
+
+ios when installed
+music://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130&i=255343130
+ios when not installed
+https://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130
+
+android when installed
+intent://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130/#Intent;package=com.apple.android.music;scheme=https;end&i=255343130
+android when not installed
+https://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130
