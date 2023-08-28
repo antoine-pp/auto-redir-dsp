@@ -26,30 +26,28 @@ document.addEventListener('DOMContentLoaded', function() {
   
     let currentIndex = 0;
   
-    function openApp(deepLink, fallback) {
-      let startTime = Date.now();
-      let timeout = 1000;
-  
-      window.location.href = deepLink;
-      setTimeout(function() {
-        if (Date.now() - startTime < timeout + 100) {
-          if (currentIndex < apps.length - 1) {
-            currentIndex++;
-            tryNextApp();
-          }
-        }
-      }, timeout);
+    function openOrTryNextApp() {
+        let startTime = Date.now();
+        let timeout = 25;
+        const app = apps[currentIndex];
+        
+        const deepLink = isIOS ? app.iosDeepLink : isAndroid ? app.androidDeepLink : null;
+        logDebug(`Trying to open: ${deepLink}`);
+
+        window.location = deepLink;
+        setTimeout(function() {
+            if (currentIndex < apps.length - 1) {
+                currentIndex++;
+                openOrTryNextApp();
+            }
+        }, timeout);
+    }
+
+    function logDebug(message) {
+        const debugLog = document.getElementById('debugLog');
+        debugLog.innerHTML += `<p>${message}</p>`;
     }
   
-    function tryNextApp() {
-      const app = apps[currentIndex];
-      if (isIOS) {
-        openApp(app.iosDeepLink, app.iosFallback);
-      } else if (isAndroid) {
-        openApp(app.androidDeepLink, app.androidFallback);
-      }
-    }
-  
-    tryNextApp();
+    openOrTryNextApp();
   });
   
