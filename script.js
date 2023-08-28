@@ -28,19 +28,26 @@ document.addEventListener('DOMContentLoaded', function() {
   
     function openOrTryNextApp() {
         let startTime = Date.now();
-        let timeout = 25;
+        let timeout = 1000; // increased from 25 to 1000
         const app = apps[currentIndex];
         
         const deepLink = isIOS ? app.iosDeepLink : isAndroid ? app.androidDeepLink : null;
-        logDebug(`Trying to open: ${deepLink}`);
 
-        window.location = deepLink;
-        setTimeout(function() {
-            if (currentIndex < apps.length - 1) {
+        if (deepLink) {
+            logDebug(`Trying to open: ${deepLink}`);
+            window.location = deepLink;
+
+            setTimeout(function() {
+            if (Date.now() - startTime < 100 + timeout) {
+                if (currentIndex < apps.length - 1) {
                 currentIndex++;
                 openOrTryNextApp();
+                }
             }
-        }, timeout);
+            }, timeout);
+        } else {
+            logDebug('Device not supported.');
+        }
     }
 
     function logDebug(message) {
