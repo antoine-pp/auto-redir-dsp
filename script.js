@@ -43,22 +43,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
     const apps = [
       {
-        iosDeepLink: 'spotify://track/id',
-        iosFallback: 'https://open.spotify.com/track/id',
-        androidDeepLink: 'intent://track/id/#Intent;package=spotify.android.app;scheme=spotify;end',
-        androidFallback: 'https://open.spotify.com/track/id'
+        iosDeepLink: 'spotify://track/3XVBdLihbNbxUwZosxcGuJ?si=475f0ccda60448c2&si=475f0ccda60448c2',
+        iosFallback: 'https://open.spotify.com/track/3XVBdLihbNbxUwZosxcGuJ?si=475f0ccda60448c2',
+        androidDeepLink: 'spotify://track/3XVBdLihbNbxUwZosxcGuJ?si=3b9cc7d835e74279&si=3b9cc7d835e74279',
+        androidFallback: 'https://open.spotify.com/track/3XVBdLihbNbxUwZosxcGuJ?si=3b9cc7d835e74279'
       },
       {
-        iosDeepLink: 'deezer://en/track/id',
-        iosFallback: 'https://www.deezer.com/en/track/id',
-        androidDeepLink: 'intent://www.deezer.com/en/track/id/#Intent;package=deezer.android.app;scheme=deezer;end',
-        androidFallback: 'https://www.deezer.com/en/track/id'
+        iosDeepLink: 'deezer://en/track/629466',
+        iosFallback: 'https://www.deezer.com/en/track/629466',
+        androidDeepLink: 'intent://www.deezer.com/en/track/629466/#Intent;package=deezer.android.app;scheme=deezer;end',
+        androidFallback: 'https://www.deezer.com/en/track/629466'
       },
       {
-        iosDeepLink: 'music://music.apple.com/us/album/id',
-        iosFallback: 'https://music.apple.com/us/album/id',
-        androidDeepLink: 'intent://music.apple.com/us/album/id/#Intent;package=com.apple.android.music;scheme=https;end',
-        androidFallback: 'https://music.apple.com/us/album/id'
+        iosDeepLink: 'music://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130&i=255343130',
+        iosFallback: 'https://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130',
+        androidDeepLink: 'intent://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130/#Intent;package=com.apple.android.music;scheme=https;end&i=255343130',
+        androidFallback: 'https://music.apple.com/us/album/if-i-aint-got-you/255342344?i=255343130'
       }
     ];
   
