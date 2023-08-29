@@ -26,15 +26,33 @@ function getCookie(name) {
 function logDebug(message, cookieAction = false, cookieContent = null) {
     const debugLog = document.getElementById('debugLog');
     const timestamp = new Date().toLocaleTimeString();
-    
+
     if (cookieAction) {
-      debugLog.innerHTML += `<h2>${cookieAction}</h2>`;
-      debugLog.innerHTML += `<p>Time: ${timestamp}</p>`;
-      debugLog.innerHTML += `<p>Cookie Content: ${cookieContent}</p>`;
+        debugLog.innerHTML += `<h2>${cookieAction}</h2>`;
+        debugLog.innerHTML += `<p>Time: ${timestamp}</p>`;
+        debugLog.innerHTML += `<p>Cookie Content: ${cookieContent}</p>`;
     } else {
-      debugLog.innerHTML += `<p>${timestamp} - ${message}</p>`;
+        debugLog.innerHTML += `<p>${timestamp} - ${message}</p>`;
     }
-  }
+}
+
+
+function showFallbackButtons() {
+    const fallbackButtons = document.getElementById('fallbackButtons');
+    fallbackButtons.style.display = 'block';
+
+    document.getElementById('spotifyButton').addEventListener('click', function() {
+        window.location = apps[0].iosFallback;
+    });
+
+    document.getElementById('deezerButton').addEventListener('click', function() {
+        window.location = apps[1].iosFallback;
+    });
+
+    document.getElementById('appleButton').addEventListener('click', function() {
+        window.location = apps[2].iosFallback;
+    });
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -75,17 +93,20 @@ document.addEventListener('DOMContentLoaded', function() {
           window.location = deepLink;
     
           setTimeout(function() {
-            if (Date.now() - startTime < 100 + timeout) {
-              if (currentIndex < apps.length - 1) {
-                currentIndex++;
-                logDebug(`Could not open: ${deepLink}`);
-                openOrTryNextApp();
-              }
-            } else {
-              setCookie('lastWorkingDeepLink', deepLink, 30); // Save the deep link in a cookie for 30 days
-              logDebug(null, "Cookie has been created", deepLink);
-            }
-          }, timeout);
+                if (Date.now() - startTime < 100 + timeout) {
+                    if (currentIndex < apps.length - 1) {
+                        currentIndex++;
+                        logDebug(`Could not open: ${deepLink}`);
+                        openOrTryNextApp();
+                    } else {
+                        showFallbackButtons(); // Show buttons when all deep links have been tried and failed
+                    }
+                } else {
+                    setCookie('lastWorkingDeepLink', deepLink, 30);
+                    logDebug(null, "Cookie has been created", deepLink);
+                }
+            }, timeout);
+
         } else {
           logDebug('Device not supported.');
         }
@@ -97,6 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
         logDebug(null, "Cookie has been read", lastWorkingDeepLink);
     } else {
         openOrTryNextApp();
+    }
+
+    if (!isIOS && !isAndroid) {
+        logDebug('Device not supported.');
+        showFallbackButtons();
     }
 });
   
