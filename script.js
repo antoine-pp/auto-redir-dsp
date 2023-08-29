@@ -54,6 +54,11 @@ function showFallbackButtons() {
     });
 }
 
+function deleteCookie(name) {
+    document.cookie = name + '=; Max-Age=-99999999;';
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
     const userAgent = navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipad|ipod/.test(userAgent);
@@ -124,5 +129,10 @@ document.addEventListener('DOMContentLoaded', function() {
         logDebug('Device not supported.');
         showFallbackButtons();
     }
+
+    document.getElementById('deleteCookieButton').addEventListener('click', function() {
+        deleteCookie('lastWorkingDeepLink');
+        location.reload();
+    });
 });
   
