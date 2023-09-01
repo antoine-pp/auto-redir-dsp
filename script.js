@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const newWindow = window.open(deepLink, '_blank');
                 newWindow.close();
             } catch (e) {
+                logDebug(`Catching error while trying to open: ${deepLink}`);
                 console.error("Deep link failed:", e);
             }            
     
