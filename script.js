@@ -102,7 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (deepLink) {
             logDebug(`Trying to open: ${deepLink}`);
-            window.location.replace(deepLink);
+            const newWindow = window.open(deepLink, '_blank');
+            newWindow.close();
 
             /*
             const a = document.createElement("a");
