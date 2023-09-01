@@ -102,12 +102,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (deepLink) {
             logDebug(`Trying to open: ${deepLink}`);
+            window.location = deepLink;
+
+            /*
             const a = document.createElement("a");
             a.href = deepLink;
             a.style.display = 'none';
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+            */
     
           setTimeout(function() {
                 if (Date.now() - startTime < 100 + timeout) {
