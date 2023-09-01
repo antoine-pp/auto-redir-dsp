@@ -63,6 +63,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const userAgent = navigator.userAgent.toLowerCase();
     const isIOS = /iphone|ipad|ipod/.test(userAgent);
     const isAndroid = /android/.test(userAgent);
+    const isSafari = /^((?!chrome|android).)*safari/i.test(userAgent);
+  
+    if (isIOS && isSafari) {
+        logDebug('Safari on iOS detected, not attempting deep links.');
+        return;
+    }
   
     const apps = [
       {
