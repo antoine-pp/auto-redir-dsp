@@ -95,12 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (deepLink) {
             logDebug(`Trying to open: ${deepLink}`);
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = deepLink;
-            document.body.appendChild(iframe);
-            setTimeout(() => { document.body.removeChild(iframe); }, 1000);
-
+            try {
+                const newWindow = window.open(deepLink, '_blank');
+                newWindow.close();
+            } catch (e) {
+                console.error("Deep link failed:", e);
+            }            
     
           setTimeout(function() {
                 if (Date.now() - startTime < 100 + timeout) {
