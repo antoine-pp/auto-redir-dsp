@@ -95,7 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (deepLink) {
           logDebug(`Trying to open: ${deepLink}`);
-          window.location.href = deepLink;
+          if (isIOS) {
+            window.location.replace(deepLink);
+          } else {
+            window.location.href = deepLink;
+          }
+          
     
           setTimeout(function() {
                 if (Date.now() - startTime < 100 + timeout) {
