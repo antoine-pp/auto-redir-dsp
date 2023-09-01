@@ -150,8 +150,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('customSpotifyButton').addEventListener('click', function() {
+        logDebug('Trying to open spotify deeplink with custom button.');
         window.location = 'spotify://track/3XVBdLihbNbxUwZosxcGuJ?si=475f0ccda60448c2&si=475f0ccda60448c2';
     });
+
+    document.getElementById('customYoutubeButtonDL').addEventListener('click', function() {
+        logDebug('Trying to open youtube deeplink with custom button.');
+        window.location = 'vnd.youtube://www.youtube.com/watch?v=wY6H3ToNUEg&v=wY6H3ToNUEg';
+    });
+
+    document.getElementById('customYoutubeButtonL').addEventListener('click', function() {
+        logDebug('Trying to open youtube link with custom button.');
+        window.location = 'https://www.youtube.com/watch?v=wY6H3ToNUEg';
+    });
+
+    
 
     document.getElementById('deleteCookieButton').addEventListener('click', function() {
         deleteCookie('lastWorkingDeepLink');
