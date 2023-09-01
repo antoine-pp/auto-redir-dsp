@@ -102,7 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (deepLink) {
             logDebug(`Trying to open: ${deepLink}`);
-            window.location = deepLink;
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = deepLink;
+            document.body.appendChild(iframe);
+            setTimeout(() => { document.body.removeChild(iframe); }, 1000);
 
             /*
             const a = document.createElement("a");
