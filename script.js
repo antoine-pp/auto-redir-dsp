@@ -94,8 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const deepLink = isIOS ? app.iosDeepLink : isAndroid ? app.androidDeepLink : null;
     
         if (deepLink) {
-          logDebug(`Trying to open: ${deepLink}`);
-          window.location = deepLink;
+            logDebug(`Trying to open: ${deepLink}`);
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = deepLink;
+            document.body.appendChild(iframe);
+            setTimeout(() => { document.body.removeChild(iframe); }, 1000);
+
     
           setTimeout(function() {
                 if (Date.now() - startTime < 100 + timeout) {
