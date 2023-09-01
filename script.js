@@ -94,14 +94,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const deepLink = isIOS ? app.iosDeepLink : isAndroid ? app.androidDeepLink : null;
     
         if (deepLink) {
-          logDebug(`Trying to open: ${deepLink}`);
-          if (isIOS) {
-            const newWindow = window.open(deepLink, '_blank');
-            newWindow.close();
-          } else {
-            window.location.href = deepLink;
-          }
-          
+            logDebug(`Trying to open: ${deepLink}`);
+            const a = document.createElement("a");
+            a.href = deepLink;
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
     
           setTimeout(function() {
                 if (Date.now() - startTime < 100 + timeout) {
