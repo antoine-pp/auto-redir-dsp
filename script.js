@@ -96,7 +96,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (deepLink) {
           logDebug(`Trying to open: ${deepLink}`);
           if (isIOS) {
-            window.location.replace(deepLink);
+            const newWindow = window.open(deepLink, '_blank');
+            newWindow.close();
           } else {
             window.location.href = deepLink;
           }
