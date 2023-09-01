@@ -94,14 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const deepLink = isIOS ? app.iosDeepLink : isAndroid ? app.androidDeepLink : null;
     
         if (deepLink) {
-            logDebug(`Trying to open: ${deepLink}`);
-            try {
-                const newWindow = window.open(deepLink, '_blank');
-                newWindow.close();
-            } catch (e) {
-                logDebug(`Catching error while trying to open: ${deepLink}`);
-                console.error("Deep link failed:", e);
-            }            
+          logDebug(`Trying to open: ${deepLink}`);
+          window.location.href = deepLink;
     
           setTimeout(function() {
                 if (Date.now() - startTime < 100 + timeout) {
