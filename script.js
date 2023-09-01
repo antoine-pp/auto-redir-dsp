@@ -147,6 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
         showFallbackButtons();
     }
 
+    document.getElementById('customSpotifyButton').addEventListener('click', function() {
+        window.location = 'spotify://track/3XVBdLihbNbxUwZosxcGuJ?si=475f0ccda60448c2&si=475f0ccda60448c2';
+    });
+    
     document.getElementById('deleteCookieButton').addEventListener('click', function() {
         deleteCookie('lastWorkingDeepLink');
         location.reload();
