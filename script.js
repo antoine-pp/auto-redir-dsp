@@ -94,6 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentIndex = 0;
   
     function openOrTryNextApp() {
+
+        if (isIOS && isSafari) {
+            logDebug('Safari on iOS detected, not attempting deep links.');
+            return;
+        }
+        
         let startTime = Date.now();
         let timeout = 1000;
         const app = apps[currentIndex];
